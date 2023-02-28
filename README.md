@@ -6,6 +6,8 @@ Made with Godot 4.0.`RC6`
 
 `I'm also attaching the final "project" of this tutorial in the repo itself.`
 
+![image](./readme_assets/game.gif)
+
 ---
 
 Starting with [this](https://www.youtube.com/watch?v=Xf2RduncoNU&t=6s&ab_channel=JonTopielski) youtube tutorial first we create a project

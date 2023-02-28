@@ -10,12 +10,18 @@ func _ready():
 
 func _physics_process(delta):
 	var movement_vector = Input.get_vector("left", "right", "up", "down")
-	if movement_vector != Vector2.ZERO:
-		animation_tree.set("parameters/Run/blend_position",movement_vector)
-		animation_tree.set("parameters/Idle/blend_position",movement_vector)
+	update_anim_params(movement_vector)
+	velocity = movement_vector.normalized() * speed
+	move_and_slide()
+	set_animation_state()
+
+func update_anim_params(input:Vector2):
+	if input != Vector2.ZERO:
+		animation_tree.set("parameters/Run/blend_position",input)
+		animation_tree.set("parameters/Idle/blend_position",input)
+	
+func set_animation_state():
+	if velocity != Vector2.ZERO:
 		state_machine.travel("Run")
 	else:
 		state_machine.travel("Idle")
-				
-	velocity = movement_vector.normalized() * speed
-	move_and_slide()
